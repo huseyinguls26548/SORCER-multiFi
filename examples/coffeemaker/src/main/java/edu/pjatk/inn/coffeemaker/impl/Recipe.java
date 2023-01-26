@@ -11,7 +11,7 @@ import java.rmi.RemoteException;
  * The Recipe class defines a coffee drink recipe
  * and allows to display and modify it when needed.
  *
- * @author   Sarah & Mike
+ * @author Sarah and Mike
  */
 public class Recipe implements Serializable {
 	/**
@@ -35,7 +35,7 @@ public class Recipe implements Serializable {
     	this.amtSugar = 0;
     	this.amtChocolate = 0;
     }
-    
+
     /**
 	 * This method returns the amount of chocolate in the drink.
 	 *
@@ -44,6 +44,7 @@ public class Recipe implements Serializable {
     public int getAmtChocolate() {
 		return amtChocolate;
 	}
+
     /**
 	 * This method modifies the amount of chocolate in the drink.
 	 *
@@ -52,8 +53,9 @@ public class Recipe implements Serializable {
     public void setAmtChocolate(int amtChocolate) {
 		if (amtChocolate >= 0) {
 			this.amtChocolate = amtChocolate;
-		} 
+		}
 	}
+
     /**
 	 * This method returns the amount of coffee in the drink.
 	 *
@@ -62,6 +64,7 @@ public class Recipe implements Serializable {
     public int getAmtCoffee() {
 		return amtCoffee;
 	}
+
     /**
 	 * This method modfies the amount of coffee in the drink.
 	 *
@@ -70,8 +73,9 @@ public class Recipe implements Serializable {
     public void setAmtCoffee(int amtCoffee) {
 		if (amtCoffee >= 0) {
 			this.amtCoffee = amtCoffee;
-		} 
+		}
 	}
+
     /**
 	 * This method returns the amount of coffee in the drink.
 	 *
@@ -80,6 +84,7 @@ public class Recipe implements Serializable {
     public int getAmtMilk() {
 		return amtMilk;
 	}
+
     /**
 	 * This method modfies the amount of coffee in the drink.
 	 *
@@ -88,8 +93,9 @@ public class Recipe implements Serializable {
     public void setAmtMilk(int amtMilk) {
 		if (amtMilk >= 0) {
 			this.amtMilk = amtMilk;
-		} 
+		}
 	}
+
     /**
 	 * This method returns the amount of sugar in the drink.
 	 *
@@ -98,16 +104,18 @@ public class Recipe implements Serializable {
     public int getAmtSugar() {
 		return amtSugar;
 	}
+
     /**
-	 * This method modfies the amount of sugar in the drink.
+	 * This method modifies the amount of sugar in the drink.
 	 *
 	 * @param amtSugar The integer value of the new amount of sugar in the drink.
 	 */
     public void setAmtSugar(int amtSugar) {
 		if (amtSugar >= 0) {
 			this.amtSugar = amtSugar;
-		} 
+		}
 	}
+
     /**
 	 * This method returns the name of the drink
 	 *
@@ -116,16 +124,18 @@ public class Recipe implements Serializable {
     public String getName() {
 		return name;
 	}
+
     /**
 	 * This method modifies the name of the drink.
 	 *
 	 * @param name The string to set the new drink name to.
 	 */
     public void setName(String name) {
-    	if(name != null) {
+    	if (name != null) {
     		this.name = name;
     	}
 	}
+
     /**
 	 * This method returns the price of the drink.
 	 *
@@ -134,6 +144,7 @@ public class Recipe implements Serializable {
     public int getPrice() {
 		return price;
 	}
+
     /**
 	 * This method modifies the price of the drink.
 	 *
@@ -142,18 +153,38 @@ public class Recipe implements Serializable {
     public void setPrice(int price) {
 		if (price >= 0) {
 			this.price = price;
-		} 
-	} 
+		}
+	}
+
+	/**
+	 * This method modifies the price of the drink.
+	 *
+	 * @param r The integer value to set the new price to.
+	 * @return true if recipe names match, otherwise returns false.
+	 */
     public boolean equals(Recipe r) {
-        if((this.name).equals(r.getName())) {
+        if ((this.name).equals(r.getName())) {
             return true;
         }
         return false;
     }
+
+	/**
+	 * Returns string representation of the Recipe object.
+	 *
+	 * @return the name of the Recipe.
+	 */
     public String toString() {
     	return name;
     }
 
+	/**
+	 * Creates a Recipe object from the provided Context.
+	 *
+	 * @param context Context object containing information needed for the Recipe.
+	 * @return a new Recipe object created based on the information from the provided Context.
+	 * @throws ContextException Throws ContextException in case the remote method has failed.
+	 */
 	static public Recipe getRecipe(Context context) throws ContextException {
 		Recipe r = new Recipe();
 		try {
@@ -169,6 +200,13 @@ public class Recipe implements Serializable {
 		return r;
 	}
 
+	/**
+	 * Creates a new instance of Context from a provided Recipe object.
+	 *
+	 * @param recipe A Recipe object.
+	 * @return instance of a Context based on the Recipe object
+	 * @throws ContextException Throws a ContextException in case the remote method has failed.
+	 */
 	static public Context getContext(Recipe recipe) throws ContextException {
 		Context cxt = new ServiceContext();
 		cxt.putValue("key", recipe.getName());
@@ -179,6 +217,4 @@ public class Recipe implements Serializable {
 		cxt.putValue("amtChocolate", recipe.getAmtChocolate());
 		return cxt;
 	}
-
-
 }
