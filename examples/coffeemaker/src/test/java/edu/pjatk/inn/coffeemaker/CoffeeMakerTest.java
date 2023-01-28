@@ -121,6 +121,7 @@ public class CoffeeMakerTest {
 	public void makeCoffee() throws Exception {
 		coffeeMaker.addRecipe(espresso);
 		assertEquals(coffeeMaker.makeCoffee(espresso, 200), 150);
+		assertEquals(inventory.getCoffee(), 9);
 	}
 
 }

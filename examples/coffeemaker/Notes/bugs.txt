@@ -1,0 +1,25 @@
+#1
+Method: 	    RecipeTest.testDeleteRecipe
+Line:	        91
+Description:    In the code we did not delete the recipe. So deleted recipe and assigned new instance
+
+#2
+Method: 		RecipeTest.testAddRecipe
+Line:	        25
+Description:    When we check user stories max coffee limit is 3 not 4
+
+#3
+Method: 		RecipeTest.testEditRecipe
+Line:	        125, 126
+Description:    Actually there are 2 different bug in this method.
+                Recipe name can not be null and can not be empty string and new recipe should compare with oldRecipe
+
+#4
+Method: 		InventoryTest.testAddInventory
+Line:	        151
+Description:	amtSugar check delimiter was wrong  wrong: >, correct: <
+
+#5
+Method: 		InventoryTest.testMakeCoffee
+Line:       	187
+Description:	We should also decrease the coffee from inventory not the increase
